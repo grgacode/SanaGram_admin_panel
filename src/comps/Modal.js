@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Modal = ({ selectedImg, setSelectedImg }) => {
-    console.log(selectedImg)
+    // console.log(selectedImg)
 
     const clickHandler = (e) => {
         if(e.target.classList.contains('backdrop')){

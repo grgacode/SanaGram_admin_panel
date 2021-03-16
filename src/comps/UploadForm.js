@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import ProgressBar from './ProgressBar';
+import { Link } from 'react-router-dom';
 
-import {projectFirestore} from '../firebase/config';
+import { projectFirestore } from '../firebase/config';
 import { useAuth } from "../contexts/AuthContext";
 
-const UploadForm = () => {
-    const [file, setFile] = useState(null);
+const UploadForm = ({ file, setFile, title, setTitle, text, setText }) => {
+
     const [error, setError] = useState(null);
 
     const [isadmin, setIsadmin] = useState(false);
@@ -13,8 +14,7 @@ const UploadForm = () => {
     console.log(currentUser.uid)
 
     projectFirestore.collection('users').doc(currentUser.uid).get().then(doc => {
-        
-        if(doc.data()){
+        if (doc.data()) {
             setIsadmin(doc.data().admin);
             console.log(doc.data())
         } else {
@@ -24,34 +24,20 @@ const UploadForm = () => {
         console.log(err);
     })
 
-    const handleChange = (e) => {
-        const selected = e.target.files[0];
-        const fileTypes = ['image/jpeg', 'image/png'];
-        
-
-        if(selected && fileTypes.includes(selected.type)){
-            setFile(selected);
-            setError('');
-        } else {
-            setFile(null);
-            setError('Please select an image file!');
-        }
-    }
     return (
         <>
-        {isadmin && <form>
-            <label className='label-button'>
-                <input type="file" onChange={handleChange} />
-                <span>+</span>
-            </label>
-            <div className='output'>
-                {error && <div className='error'>{error}</div>}
-                {file && <div className='file'>{file.name}</div>}
-                {file && <ProgressBar file={file} setFile={setFile} />}
-            </div>
-        </form>}
+            {isadmin && <form>
+                <Link to="/upload" className='label-button'>
+                    <div className="label-link"><span>+</span></div>
+                </Link>
+                <div className='output'>
+                    {error && <div className='error'>{error}</div>}
+                    {file && <div className='file'>{file.name}</div>}
+                    {file && <ProgressBar file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText}/>}
+                </div>
+            </form>}
         </>
     );
 }
- 
+
 export default UploadForm;

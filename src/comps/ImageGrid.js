@@ -2,8 +2,8 @@ import React from 'react';
 import useFirestore from '../hooks/useFirestore'
 import { motion } from 'framer-motion';
 
-const ImageGrid = ({setSelectedImg}) => {
-    const {docs} = useFirestore('images');
+const ImageGrid = ({ setSelectedImg }) => {
+    const { docs } = useFirestore('images');
     // console.log(docs)
 
 
@@ -17,10 +17,13 @@ const ImageGrid = ({setSelectedImg}) => {
                     <motion.img src={doc.url} alt="images"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }} />
+                    <div className="image-title">
+                        <p>{doc.title}</p>
+                    </div>
                 </motion.div>
             ))}
         </div>
     );
 }
- 
+
 export default ImageGrid;

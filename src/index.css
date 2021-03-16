@@ -78,11 +78,43 @@ label input{
   color: var(--primary);
   font-weight: bold;
   font-size: 24px;
+  text-decoration: none;
 }
-label:hover{
+
+.upload-form {  
+}
+
+.label-button-upload{
+  display: block;
+  float: left;
+  width: 50px;
+  height: 30px;
+  border: 1px solid #adadad;
+  border-radius: 10%;
+  margin: 10px auto;
+  line-height: 30px;
+  color: #adadad;
+  font-weight: bold;
+  font-size: 16px;
+}
+.file-name {
+  display: block;
+  float: left;  
+  height: 30px;
+  margin: 10px 10px;
+  line-height: 32px;
+  color: #adadad;
+  font-size: 15px;
+}
+.label-button:hover{
   background: var(--sanagram);
   color: white;
 }
+.label-button-upload:hover{
+  background: var(--sanagram);
+  color: white;
+}
+
 .output{
   height: 60px;
   font-size: 0.8rem;
@@ -139,6 +171,18 @@ label:hover{
   top: 0;
   left: 0;
 }
+.img-wrap .image-title {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;        
+  text-align: center;
+  top: 80%; /* Adjust this value to move the positioned div up and down */
+  background: rgba(0, 0, 0, 0.8);
+  /* font-family: Arial,sans-serif; */
+  color: #fff;
+  width: 100%; /* Set the width of the positioned div */
+}
 
 /* modal styles */
 .backdrop{
@@ -154,6 +198,12 @@ label:hover{
   max-width: 80%;
   max-height: 80%;
   margin: 100px auto;
+  box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
+  border: 3px solid white;
+}
+.backdrop form{
+  display: block;
+  margin: 10px auto;
   box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
   border: 3px solid white;
 }
@@ -202,6 +252,17 @@ label:hover{
   background: none;
   padding: 0 5px;
   height: 40px;
+}
+
+.txtb textarea{
+  font-size: 15px;
+  color: #333;
+  border: none;
+  width: 100%;
+  outline: none;
+  background: none;
+  padding: 0 5px;
+  height: 120px;
 }
 
 .txtb span::before{
