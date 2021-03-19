@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { projectFirestore } from '../firebase/config';
 import { useAuth } from "../contexts/AuthContext";
 import { motion } from 'framer-motion';
 
-const Upload = ({ file, setFile, title, setTitle, text, setText}) => {
+const Upload = ({ file, setFile, setTitle, setText }) => {
 
     const titleRef = useRef()
     const textRef = useRef()
@@ -31,8 +31,8 @@ const Upload = ({ file, setFile, title, setTitle, text, setText}) => {
         try {
             setError("")
             setLoading(true)
-            setTitle( titleRef.current.value );         
-            setText( textRef.current.value );
+            setTitle(titleRef.current.value);
+            setText(textRef.current.value);
             setLoading(false)
             history.push("/")
         } catch {
@@ -44,7 +44,7 @@ const Upload = ({ file, setFile, title, setTitle, text, setText}) => {
         const fileTypes = ['image/jpeg', 'image/png'];
 
         if (selected && fileTypes.includes(selected.type)) {
-            setFile(selected);            
+            setFile(selected);
             setError('');
         } else {
             setFile(null);
@@ -60,31 +60,32 @@ const Upload = ({ file, setFile, title, setTitle, text, setText}) => {
             history.push("/");
         }
     }
-
+    
     return (
-        <motion.div className='backdrop' onClick={clickHandler}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}>
-            {isadmin && <form onSubmit={handleSubmit} className="login-form">
-                <h1>Upload</h1>
-
-                <div className="txtb">
-                    <input type="text" placeholder="Title" ref={titleRef} required />
-                </div>
-                <div className="txtb">
-                    <textarea type="password" placeholder="Text" ref={textRef} required />
-                </div>
-                <div className="upload-form">
-                    <label className="label-button-upload">
-                        <input type="file" onChange={handleChange} required />
-                        <span>Add</span>
-                    </label>
-                    <span className='file-name'>{file ? `${file.name.length > 25 ? file.name.substr(file.name.length - 25) : file.name}` : "No file choosen"}</span>
-                </div>
-                <input disabled={loading} type="submit" className="logbtn" value="Upload"></input>
-                {error && <h5 className='alert-text'>{error}</h5>}
-            </form>}
-        </motion.div>
+        <>
+            {isadmin && <motion.div className='backdrop' onClick={clickHandler}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}>
+                <form onSubmit={handleSubmit} className="login-form">
+                    <h1>Upload</h1>
+                    <div className="txtb">
+                        <input type="text" placeholder="Title" ref={titleRef} required />
+                    </div>
+                    <div className="txtb">
+                        <textarea type="password" placeholder="Text" ref={textRef} required />
+                    </div>
+                    <div className="upload-form">
+                        <label className="label-button-upload">
+                            <input type="file" onChange={handleChange} required />
+                            <span>Add</span>
+                        </label>
+                        <span className='file-name'>{file ? `${file.name.length > 25 ? file.name.substr(file.name.length - 25) : file.name}` : "No file choosen"}</span>
+                    </div>
+                    <input disabled={loading} type="submit" className="logbtn" value="Upload"></input>
+                    {error && <h5 className='alert-text'>{error}</h5>}
+                </form>
+            </motion.div>}
+        </>
     )
 }
 

@@ -22,25 +22,24 @@ export default function Login() {
     } catch {
       setError("Failed to log in")
     }
-    
   }
 
-    return (
-        <div className='backdrop'>
-            <form onSubmit={handleSubmit} className="login-form ">
-                <h1>Log In</h1>
-                <div className="txtb">
-                    <input type="text" placeholder="email" ref={emailRef} required />
-                </div>
-                <div className="txtb">
-                    <input type="password" placeholder="password" ref={passwordRef} required />
-                </div>
-                <input disabled={loading} type="submit" className="logbtn" value="Log In"></input>
-                {error && <h5 className='alert-text'>{error}</h5>}
-                <div className='bottom-text'>
-                    Need an account? <Link to="/signup">Sign Up</Link>
-                </div>
-            </form>
+  return (
+    <div className='backdrop'>
+      <form onSubmit={handleSubmit} className="login-form ">
+        <h1>Log In</h1>
+        <div className="txtb">
+          <input type="text" placeholder="email" ref={emailRef} required />
         </div>
-    )
+        <div className="txtb">
+          <input type="password" placeholder="password" ref={passwordRef} required />
+        </div>
+        <input disabled={loading} type="submit" className="logbtn" value="Log In"></input>
+        {error && <h5 className='alert-text'>{error}</h5>}
+        <div className='bottom-text'>
+          Need an account? <Link to="/signup">Sign Up</Link>
+        </div>
+      </form>
+    </div>
+  )
 }

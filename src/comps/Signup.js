@@ -26,14 +26,14 @@ const Signup = () => {
       history.push("/")
     } catch {
       setError("Failed to create an account")
-    }    
+    }
   }
 
   return (
     <div className='backdrop'>
       <form onSubmit={handleSubmit} className="login-form ">
         <h1>Sign Up</h1>
-        
+
         <div className="txtb">
           <input type="text" placeholder="email" ref={emailRef} required />
         </div>

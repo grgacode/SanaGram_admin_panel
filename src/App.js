@@ -11,7 +11,7 @@ import Edit from './comps/Edit';
 
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from './comps/PrivateRoute';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   const [selectedImg, setSelectedImg] = useState(null);
@@ -25,7 +25,6 @@ function App() {
     document.title = "SanaGram"
   }, [])
 
-
   return (
     <div className="App">
       <Router>
@@ -34,11 +33,11 @@ function App() {
           <Title />
           <PrivateRoute exact path="/" component={UploadForm}
             file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText} />
-          <ImageGrid setSelectedImg={setSelectedImg} setTitle={setTitle} setText={setText} setId={setId} setUrl={setUrl}/>
+          <ImageGrid setSelectedImg={setSelectedImg} setTitle={setTitle} setText={setText} setId={setId} setUrl={setUrl} />
           <PrivateRoute exact path="/upload" component={Upload}
             file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText} />
           <PrivateRoute exact path="/edit" component={Edit}
-            file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText} id={id} url={url}/>
+            file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText} id={id} url={url} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} text={text} />}

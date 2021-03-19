@@ -81,7 +81,6 @@ label input{
   text-decoration: none;
 }
 
-
 .label-button-upload{
   display: block;
   float: left;
@@ -138,14 +137,12 @@ label input{
   color: var(--error);
 }
 
-
 /* progress bar styles */
 .progress-bar{
   height: 5px;
   background: var(--primary);
   margin-top: 20px;
 }
-
 
 /* image grid styles */
 .img-grid{
@@ -215,7 +212,6 @@ label input{
   color: var(--sanagram);
 }
 
-
 /* modal styles */
 .backdrop{
   position: fixed;
@@ -252,16 +248,6 @@ label input{
   box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
   border: 3px solid white;
 }
-/* .backdrop form{
-  background-color: white;
-  display: block;
-  height: 400px;
-  max-width: 40%;
-  max-height: 80%;
-  margin: 60px auto;
-  box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
-  border: 3px solid white;
-} */
 
 /*login form */
 .login-form{

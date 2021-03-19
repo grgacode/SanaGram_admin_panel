@@ -7,7 +7,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 const UploadForm = ({ file, setFile, title, setTitle, text, setText }) => {
 
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
 
     const [isadmin, setIsadmin] = useState(false);
     const { currentUser } = useAuth();
@@ -31,9 +31,9 @@ const UploadForm = ({ file, setFile, title, setTitle, text, setText }) => {
                     <div className="label-link"><span>+</span></div>
                 </Link>
                 <div className='output'>
-                    {error && <div className='error'>{error}</div>}
+                    {/* {error && <div className='error'>{error}</div>} */}
                     {file && <div className='file'>{file.name}</div>}
-                    {file && <ProgressBar file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText}/>}
+                    {file && <ProgressBar file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText} />}
                 </div>
             </form>}
         </>
