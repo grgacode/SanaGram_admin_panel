@@ -4,7 +4,7 @@ import { projectFirestore } from '../firebase/config';
 import { useAuth } from "../contexts/AuthContext";
 import { motion } from 'framer-motion';
 
-const Upload = ({ file, setFile, title, setTitle, text, setText }) => {
+const Upload = ({ file, setFile, title, setTitle, text, setText}) => {
 
     const titleRef = useRef()
     const textRef = useRef()
@@ -36,7 +36,7 @@ const Upload = ({ file, setFile, title, setTitle, text, setText }) => {
             setLoading(false)
             history.push("/")
         } catch {
-            setError("Failed to to upload an image")
+            setError("Failed to upload an image")
         }
     }
     const handleChange = (e) => {

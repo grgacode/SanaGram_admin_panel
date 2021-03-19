@@ -81,13 +81,24 @@ label input{
   text-decoration: none;
 }
 
-.upload-form {  
-}
 
 .label-button-upload{
   display: block;
   float: left;
   width: 50px;
+  height: 30px;
+  border: 1px solid #adadad;
+  border-radius: 10%;
+  margin: 10px auto;
+  line-height: 30px;
+  color: #adadad;
+  font-weight: bold;
+  font-size: 16px;
+}
+.label-button-delete{
+  display: block;
+  float: left;
+  width: 70px;
   height: 30px;
   border: 1px solid #adadad;
   border-radius: 10%;
@@ -111,6 +122,10 @@ label input{
   color: white;
 }
 .label-button-upload:hover{
+  background: var(--sanagram);
+  color: white;
+}
+.label-button-delete:hover{
   background: var(--sanagram);
   color: white;
 }
@@ -161,6 +176,7 @@ label input{
   padding: 80% 0;
   /* padding controls height, will always be perfectly square regardless of width */
   position: relative;
+  
   opacity: 0.8;
 }
 .img-wrap img{
@@ -177,12 +193,28 @@ label input{
   left: 0;
   right: 0;        
   text-align: center;
-  top: 80%; /* Adjust this value to move the positioned div up and down */
+  top: 75%; /* Adjust this value to move the positioned div up and down */
   background: rgba(0, 0, 0, 0.8);
   /* font-family: Arial,sans-serif; */
   color: #fff;
   width: 100%; /* Set the width of the positioned div */
 }
+
+.link-edit{
+  position: absolute;
+  text-decoration: none;
+  right: 20px;    
+  margin: 10px auto;
+  line-height: 20px;
+  color: #adadad;
+  font-size: 16px;
+  bottom: 0;
+}
+
+.link-edit:hover {
+  color: var(--sanagram);
+}
+
 
 /* modal styles */
 .backdrop{
@@ -193,6 +225,7 @@ label input{
   height: 100%;
   background: rgba(0,0,0,0.5);
 }
+
 .backdrop img{
   display: block;
   max-width: 80%;
@@ -200,6 +233,18 @@ label input{
   margin: 100px auto;
   box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
   border: 3px solid white;
+}
+.image-text {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;        
+  text-align: center;
+  top: 70%; /* Adjust this value to move the positioned div up and down */
+  background: rgba(0, 0, 0, 0.8);
+  /* font-family: Arial,sans-serif; */
+  color: #fff;
+  width: 350px; /* Set the width of the positioned div */
 }
 .backdrop form{
   display: block;
@@ -256,6 +301,7 @@ label input{
 
 .txtb textarea{
   font-size: 15px;
+  font-family: Arial,sans-serif;
   color: #333;
   border: none;
   width: 100%;
