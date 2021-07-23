@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { projectFirestore } from '../firebase/config';
 import { useAuth } from "../contexts/AuthContext";
 
-const ImageGrid = ({ setSelectedImg, setTitle, setText, setId, setUrl }) => {
+const ImageGrid = ({ setSelectedImg, setTitle, setCategory, setText, setLatitude, setLongitude, setId, setUrl }) => {
     const { docs } = useFirestore('images');
 
     const [isadmin, setIsadmin] = useState(false);
@@ -45,6 +45,9 @@ const ImageGrid = ({ setSelectedImg, setTitle, setText, setId, setUrl }) => {
                         onClick={() => {
                             setText(doc.text)
                             setTitle(doc.title)
+                            setCategory(doc.category)
+                            setLatitude(doc.latitude)
+                            setLongitude(doc.longitude)
                             setId(doc.id)
                             setUrl(doc.url)
                         }}>EDIT</Link>}

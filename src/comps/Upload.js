@@ -4,10 +4,13 @@ import { projectFirestore } from '../firebase/config';
 import { useAuth } from "../contexts/AuthContext";
 import { motion } from 'framer-motion';
 
-const Upload = ({ file, setFile, setTitle, setText }) => {
+const Upload = ({ file, setFile, setTitle, setCategory, setText, setLatitude, setLongitude }) => {
 
     const titleRef = useRef()
+    const categoryRef = useRef()
     const textRef = useRef()
+    const latitudeRef = useRef()
+    const longitudeRef = useRef()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const history = useHistory()
@@ -32,7 +35,10 @@ const Upload = ({ file, setFile, setTitle, setText }) => {
             setError("")
             setLoading(true)
             setTitle(titleRef.current.value);
+            setCategory(categoryRef.current.value);
             setText(textRef.current.value);
+            setLatitude(latitudeRef.current.value);
+            setLongitude(longitudeRef.current.value);
             setLoading(false)
             history.push("/")
         } catch {
@@ -60,7 +66,7 @@ const Upload = ({ file, setFile, setTitle, setText }) => {
             history.push("/");
         }
     }
-    
+
     return (
         <>
             {isadmin && <motion.div className='backdrop' onClick={clickHandler}
@@ -69,10 +75,19 @@ const Upload = ({ file, setFile, setTitle, setText }) => {
                 <form onSubmit={handleSubmit} className="login-form">
                     <h1>Upload</h1>
                     <div className="txtb">
-                        <input type="text" placeholder="Title" ref={titleRef} required />
+                        <div className="double-input"> 
+                            <input className="title-first" type="text" placeholder="Title" ref={titleRef} required />
+                            <input className="category-second" type="text" placeholder="Category" ref={categoryRef} required />
+                        </div>
                     </div>
                     <div className="txtb">
-                        <textarea type="password" placeholder="Text" ref={textRef} required />
+                        <textarea type="text" placeholder="Text" ref={textRef} required />
+                    </div>
+                    <div className="txtb">
+                        <div className="double-input">
+                            <input type="number" step="any" placeholder="latitude" ref={latitudeRef} required />
+                            <input type="number" step="any" placeholder="longitude" ref={longitudeRef} required />
+                        </div>
                     </div>
                     <div className="upload-form">
                         <label className="label-button-upload">

@@ -172,10 +172,13 @@ label input{
   height: 0;
   padding: 80% 0;
   /* padding controls height, will always be perfectly square regardless of width */
-  position: relative;
-  
+  position: relative;  
   opacity: 0.8;
 }
+/* .img-wrap:hover{
+  box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.3);
+  transition: 0.2s;
+} */
 .img-wrap img{
   min-width: 100%;
   min-height: 100%;
@@ -254,8 +257,8 @@ label input{
   width: 460px;
   max-width:60%;
   background: #f1f1f1;
-  height: 480px;
-  padding: 70px 40px;
+  height: 500px;
+  padding: 50px 40px;
   border-radius: 10px;
   position: absolute;
   left: 50%;
@@ -294,7 +297,18 @@ label input{
   outline: none;
   background: none;
   padding: 0 5px;
-  height: 120px;
+  height: 100px;
+}
+
+.double-input{
+  display: flex;
+}
+
+.title-first{
+  flex: 3 1 0;
+}
+.category-second{
+  flex: 1 1 0;
 }
 
 .txtb span::before{

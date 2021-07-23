@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { projectFirestore } from '../firebase/config';
 import { useAuth } from "../contexts/AuthContext";
 
-const UploadForm = ({ file, setFile, title, setTitle, text, setText }) => {
+const UploadForm = ({ file, setFile, title, setTitle, category, setCategory, text, setText, latitude, setLatitude, longitude, setLongitude }) => {
 
     // const [error, setError] = useState(null);
 
@@ -33,7 +33,8 @@ const UploadForm = ({ file, setFile, title, setTitle, text, setText }) => {
                 <div className='output'>
                     {/* {error && <div className='error'>{error}</div>} */}
                     {file && <div className='file'>{file.name}</div>}
-                    {file && <ProgressBar file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText} />}
+                    {file && <ProgressBar file={file} setFile={setFile} title={title} setTitle={setTitle} category={category} setCategory={setCategory}
+                    text={text} setText={setText} latitude={latitude} setLatitude={setLatitude} longitude={longitude} setLongitude={setLongitude}/>}
                 </div>
             </form>}
         </>

@@ -4,17 +4,20 @@ import { projectFirestore, projectStorage } from '../firebase/config';
 import { useAuth } from "../contexts/AuthContext";
 import { motion } from 'framer-motion';
 
-const Upload = ({ setFile, title, text, id, url }) => {
+const Upload = ({ setFile, title, category, text, latitude, longitude, id, url }) => {
 
     const titleRef = useRef()
+    const categoryRef = useRef()
     const textRef = useRef()
+    const latitudeRef = useRef()
+    const longitudeRef = useRef()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const history = useHistory()
     const [isadmin, setIsadmin] = useState(false);
     const { currentUser } = useAuth();
 
-    //reference    
+    //reference 
     const collectionRef = projectFirestore.collection('images');
 
     projectFirestore.collection('users').doc(currentUser.uid).get().then(doc => {
@@ -30,11 +33,14 @@ const Upload = ({ setFile, title, text, id, url }) => {
 
     async function handleSubmit(e) {
         e.preventDefault()
-        
+
         try {
             setError("")
             setLoading(true)
-            await collectionRef.doc(id).update({ title: titleRef.current.value, text: textRef.current.value });
+            await collectionRef.doc(id).update({
+                title: titleRef.current.value, category: categoryRef.current.value, text: textRef.current.value,
+                latitude: Number(latitudeRef.current.value), longitude: Number(longitudeRef.current.value)
+            });
             setLoading(false)
             history.push("/")
         } catch {
@@ -77,10 +83,20 @@ const Upload = ({ setFile, title, text, id, url }) => {
                 {isadmin && <form onSubmit={handleSubmit} className="login-form">
                     <h1>Edit</h1>
                     <div className="txtb">
-                        <input type="text" placeholder="Title" defaultValue={`${title}`} ref={titleRef} required />
+                        <div className="double-input">
+                            <input className="title-first" type="text" placeholder="Title" defaultValue={`${title}`} ref={titleRef} required />
+                            <input className="category-second" type="text" placeholder="Category" defaultValue={`${category}`} ref={categoryRef} required />
+                        </div>
+
                     </div>
                     <div className="txtb">
                         <textarea type="password" placeholder="Text" defaultValue={`${text}`} ref={textRef} required />
+                    </div>
+                    <div className="txtb">
+                        <div className="double-input">
+                            <input type="number" step="any" placeholder="latitude" defaultValue={`${latitude}`} ref={latitudeRef} required />
+                            <input type="number" step="any" placeholder="longitude" defaultValue={`${longitude}`} ref={longitudeRef} required />
+                        </div>
                     </div>
                     <div className="upload-form">
                         <label className="label-button-delete" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) deleteHandler() }}>

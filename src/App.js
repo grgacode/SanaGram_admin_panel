@@ -17,7 +17,10 @@ function App() {
   const [selectedImg, setSelectedImg] = useState(null);
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState(null);
+  const [category, setCategory] = useState(null);
   const [text, setText] = useState(null);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const [id, setId] = useState(null);
   const [url, setUrl] = useState(null);
 
@@ -32,12 +35,16 @@ function App() {
           <Navbar />
           <Title />
           <PrivateRoute exact path="/" component={UploadForm}
-            file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText} />
-          <ImageGrid setSelectedImg={setSelectedImg} setTitle={setTitle} setText={setText} setId={setId} setUrl={setUrl} />
+            file={file} setFile={setFile} title={title} setTitle={setTitle} category={category} setCategory={setCategory}
+            text={text} setText={setText} latitude={latitude} setLatitude={setLatitude} longitude={longitude} setLongitude={setLongitude} />
+          <ImageGrid setSelectedImg={setSelectedImg} setTitle={setTitle} setCategory={setCategory} setText={setText} setLatitude={setLatitude}
+            setLongitude={setLongitude} setId={setId} setUrl={setUrl} />
           <PrivateRoute exact path="/upload" component={Upload}
-            file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText} />
+            file={file} setFile={setFile} title={title} setTitle={setTitle} category={category} setCategory={setCategory}
+            text={text} setText={setText} latitude={latitude} setLatitude={setLatitude} longitude={longitude} setLongitude={setLongitude} />
           <PrivateRoute exact path="/edit" component={Edit}
-            file={file} setFile={setFile} title={title} setTitle={setTitle} text={text} setText={setText} id={id} url={url} />
+            file={file} setFile={setFile} title={title} setTitle={setTitle} category={category} setCategory={setCategory}
+            text={text} setText={setText} latitude={latitude} longitude={longitude} id={id} url={url} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} text={text} />}
